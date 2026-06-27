@@ -4,10 +4,9 @@ import { logo } from '../data/images.js';
 import MagneticButton from './MagneticButton.jsx';
 
 const navItems = [
-  ['Атмосфера', '#atmosphere'],
+  ['О нас', '#about'],
   ['Меню', '#menu'],
   ['Галерея', '#gallery'],
-  ['Для студентов', '#students'],
   ['Контакты', '#contacts'],
 ];
 
@@ -37,7 +36,7 @@ export default function Header() {
 
       <div className="header-actions">
         <MagneticButton href="#contacts" className="header-cta">
-          Зайти вечером
+          На карте
         </MagneticButton>
         <button
           className="burger-button"
@@ -63,7 +62,7 @@ export default function Header() {
             </a>
           ))}
           <MagneticButton href="#contacts" variant="cream" onClick={closeMenu}>
-            Зайти вечером
+            На карте
           </MagneticButton>
         </div>
       </div>

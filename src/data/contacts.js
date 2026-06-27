@@ -1,4 +1,4 @@
-export const cafeAddress = 'Москва, Лялин пер., 8, стр. 2';
+export const cafeAddress = 'Москва, Лялин переулок, 8, стр. 2';
 
 export const cafeCoords = {
   lat: 55.757962,

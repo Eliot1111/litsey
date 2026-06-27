@@ -12,12 +12,12 @@ const contactRows = [
   {
     icon: Clock3,
     label: 'Часы',
-    value: 'Пн-Вс 09:00-23:00',
+    value: 'Ежедневно 09:00–22:00',
   },
   {
     icon: Phone,
     label: 'Телефон',
-    value: '+7 (000) 000-00-00',
+    value: '+7 (915) 138-68-40',
   },
 ];
 
@@ -26,11 +26,11 @@ export default function Contacts() {
     <section className="section contacts-section" id="contacts">
       <div className="section-shell contacts-layout">
         <Reveal className="section-copy contacts-copy">
-          <p className="section-index">06 / Контакты</p>
-          <h2>Вечер начинается здесь.</h2>
+          <p className="section-index">Контакты</p>
+          <h2>Лицей на карте.</h2>
           <p>
-            Сохраните Лицей как точку после пар: кофе, еда и стол, за которым
-            можно спокойно договорить день.
+            Адрес, часы работы и быстрый переход в карту. Перед визитом
+            лучше уточнить наличие столов по телефону.
           </p>
 
           <div className="contacts-list" aria-label="Контактная информация">

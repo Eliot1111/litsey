@@ -6,11 +6,11 @@ export default function Gallery() {
     <section className="section gallery-section" id="gallery">
       <div className="section-shell">
         <Reveal className="section-heading gallery-heading">
-          <p className="section-index">03 / Галерея</p>
-          <h2>Живое место, а не просто красивые столы.</h2>
+          <p className="section-index">Галерея</p>
+          <h2>Интерьер, выпечка и детали меню.</h2>
           <p>
-            Фасад, свет у окна, слоёная выпечка, чашка капучино и длинный стол,
-            за которым легко потерять счет времени.
+            Несколько кадров, которые показывают настроение места без
+            повторов и всплывающих подписей.
           </p>
         </Reveal>
 
@@ -23,7 +23,6 @@ export default function Gallery() {
               delay={(index % 6) * 80}
             >
               <img src={image.src} alt={image.alt} loading="lazy" />
-              <figcaption>{image.label}</figcaption>
             </Reveal>
           ))}
         </div>

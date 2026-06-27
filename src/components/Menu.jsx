@@ -1,113 +1,97 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Flame, Sparkle, Utensils } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { menuGroups } from '../data/menu.js';
 import Reveal from './Reveal.jsx';
 
 export default function MenuSection() {
   const [activeGroup, setActiveGroup] = useState(menuGroups[0].id);
-  const tabRefs = useRef({});
+  const tabsRef = useRef(null);
+  const activeTabRef = useRef(null);
   const selected = useMemo(
     () => menuGroups.find((group) => group.id === activeGroup) ?? menuGroups[0],
     [activeGroup],
   );
 
   useEffect(() => {
-    tabRefs.current[activeGroup]?.scrollIntoView({
-      block: 'nearest',
+    activeTabRef.current?.scrollIntoView({
       behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center',
     });
   }, [activeGroup]);
+
+  const scrollTabs = (direction) => {
+    tabsRef.current?.scrollBy({
+      left: direction * 280,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <section className="section menu-section" id="menu">
       <div className="section-shell">
         <Reveal className="section-heading menu-heading">
-          <p className="section-index">02 / Меню</p>
-          <h2>Меню как записка другу: бери тёплое и садись рядом.</h2>
+          <p className="section-index">Меню</p>
+          <h2>Разделы сверху, позиции внутри — просто и быстро.</h2>
           <p>
-            Все разделы из меню Лицея: вкладки, плавное появление позиций, цена и
-            примерная калорийность без лишних картинок внутри меню.
+            Выберите категорию в верхней ленте. Карточки мягко меняются, а в
+            каждой позиции остаются только название и цена.
           </p>
         </Reveal>
 
-        <div className="menu-layout">
-          <Reveal className="menu-sidebar" delay={80}>
-            <div className="menu-sidebar__top">
-              <Utensils aria-hidden="true" size={22} strokeWidth={1.6} />
-              <p>Выберите раздел — плашки с позициями появятся мягкой волной.</p>
+        <Reveal className="menu-panel" delay={100}>
+          <div className="menu-control-row">
+            <div className="menu-current">
+              <span>Сейчас открыт раздел</span>
+              <h3>{selected.title}</h3>
             </div>
 
-            <div className="menu-tabs" role="tablist" aria-label="Категории меню">
-              {menuGroups.map((group) => (
-                <button
-                  key={group.id}
-                  ref={(node) => {
-                    tabRefs.current[group.id] = node;
-                  }}
-                  type="button"
-                  role="tab"
-                  aria-selected={group.id === activeGroup}
-                  onClick={() => setActiveGroup(group.id)}
+            <div className="menu-arrow-group" aria-label="Перелистать разделы меню">
+              <button type="button" aria-label="Предыдущие разделы" onClick={() => scrollTabs(-1)}>
+                <ChevronLeft aria-hidden="true" size={20} strokeWidth={1.8} />
+              </button>
+              <button type="button" aria-label="Следующие разделы" onClick={() => scrollTabs(1)}>
+                <ChevronRight aria-hidden="true" size={20} strokeWidth={1.8} />
+              </button>
+            </div>
+          </div>
+
+          <div className="menu-tabs" role="tablist" aria-label="Категории меню" ref={tabsRef}>
+            {menuGroups.map((group) => (
+              <button
+                key={group.id}
+                ref={group.id === activeGroup ? activeTabRef : null}
+                type="button"
+                role="tab"
+                aria-selected={group.id === activeGroup}
+                onClick={() => setActiveGroup(group.id)}
+              >
+                <span>{group.title}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="menu-list" role="tabpanel" aria-label={selected.title} key={selected.id}>
+            <div className="menu-list__top">
+              <p>{selected.note}</p>
+              <span>{selected.items.length} поз.</span>
+            </div>
+
+            <div className="menu-card-grid">
+              {selected.items.map((item, index) => (
+                <article
+                  className="menu-card"
+                  key={item.name}
+                  style={{ '--menu-card-delay': `${index * 42}ms` }}
                 >
-                  <span>{group.title}</span>
-                  <small>{group.items.length}</small>
-                </button>
+                  <div>
+                    <span className="menu-card__tag">{item.tag}</span>
+                    <h4>{item.name}</h4>
+                  </div>
+                  <strong>{item.price}</strong>
+                </article>
               ))}
             </div>
-          </Reveal>
-
-          <Reveal className="menu-board" delay={140}>
-            <div className="menu-list" role="tabpanel" aria-label={selected.title} key={selected.id}>
-              <div className="menu-list__title">
-                <Sparkle aria-hidden="true" size={18} />
-                <div>
-                  <h3>{selected.title}</h3>
-                  <p>{selected.note}</p>
-                </div>
-              </div>
-
-              <div className="menu-card-grid">
-                {selected.items.map((item, index) => (
-                  <article
-                    className="menu-card"
-                    key={item.name}
-                    style={{ '--menu-card-delay': `${index * 52}ms` }}
-                  >
-                    <div className="menu-card__head">
-                      <h4>{item.name}</h4>
-                      <span>{item.tag}</span>
-                    </div>
-                    <div className="menu-card__meta">
-                      <strong>{item.price}</strong>
-                      <small>
-                        <Flame aria-hidden="true" size={14} strokeWidth={1.8} />
-                        ~{item.calories} ккал
-                      </small>
-                    </div>
-                  </article>
-                ))}
-              </div>
-
-              <div className="menu-calorie-note">
-                Калорийность ориентировочная: порции в кафе могут отличаться по весу,
-                соусам, молоку и сезонным ингредиентам.
-              </div>
-            </div>
-          </Reveal>
-        </div>
-
-        <Reveal className="menu-afterword" delay={180}>
-          <div>
-            <span>15 разделов</span>
-            <p>От супов и горячего до кофе, выпечки и вечерних закусок.</p>
-          </div>
-          <div>
-            <span>~ ккал</span>
-            <p>Быстрый ориентир для выбора, а не медицинская таблица.</p>
-          </div>
-          <div>
-            <span>без фото</span>
-            <p>Меню остается быстрым, чистым и похожим на ресторанную карту.</p>
           </div>
         </Reveal>
       </div>

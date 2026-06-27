@@ -3,8 +3,6 @@ import Hero from './components/Hero.jsx';
 import Atmosphere from './components/Atmosphere.jsx';
 import Menu from './components/Menu.jsx';
 import Gallery from './components/Gallery.jsx';
-import StudentPlace from './components/StudentPlace.jsx';
-import EveningBlock from './components/EveningBlock.jsx';
 import Contacts from './components/Contacts.jsx';
 import Footer from './components/Footer.jsx';
 
@@ -17,8 +15,6 @@ export default function App() {
         <Atmosphere />
         <Menu />
         <Gallery />
-        <StudentPlace />
-        <EveningBlock />
         <Contacts />
       </main>
       <Footer />

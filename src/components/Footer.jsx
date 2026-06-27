@@ -1,10 +1,9 @@
 import { logo } from '../data/images.js';
 
 const links = [
-  ['Атмосфера', '#atmosphere'],
+  ['О нас', '#about'],
   ['Меню', '#menu'],
   ['Галерея', '#gallery'],
-  ['Для студентов', '#students'],
   ['Контакты', '#contacts'],
 ];
 
@@ -16,7 +15,7 @@ export default function Footer() {
           <img src={logo} alt="Лицей" />
         </a>
 
-        <p>кофе, еда и вечера после пар</p>
+        <p>кофе, выпечка и завтраки в Лялином переулке</p>
 
         <nav aria-label="Навигация в футере">
           {links.map(([label, href]) => (
@@ -26,19 +25,7 @@ export default function Footer() {
           ))}
         </nav>
 
-        <div className="social-links" aria-label="Социальные сети">
-          <a href="#" aria-label="Telegram">
-            tg
-          </a>
-          <a href="#" aria-label="VK">
-            vk
-          </a>
-          <a href="#" aria-label="Instagram">
-            in
-          </a>
-        </div>
-
-        <small>© 2026 Лицей. Для дедлайнов, свиданий и долгих разговоров.</small>
+        <small>© 2026 Лицей. Москва, Лялин переулок, 8, стр. 2.</small>
       </div>
     </footer>
   );

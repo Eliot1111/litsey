@@ -42,13 +42,12 @@ export default function Hero() {
         </div>
 
         <h1>
-          <span>Место, где пары заканчиваются,</span>
-          <span>а вечер только начинается.</span>
+          <span>Лицей</span>
         </h1>
 
         <p>
-          Тёплый студенческий плейс с кофе, едой, разговорами и атмосферой, в
-          которой хочется задержаться.
+          Кафе и пекарня в Лялином переулке: завтраки, горячая выпечка,
+          кофе, спокойный свет и меню на каждый день.
         </p>
 
         <div className="hero-actions" aria-label="Основные действия">
@@ -57,15 +56,6 @@ export default function Hero() {
             Найти нас
           </MagneticButton>
         </div>
-      </div>
-
-      <aside className="hero-note" aria-label="Вечерняя атмосфера">
-        <span>18:30</span>
-        <p>конспект дописан, кофе еще горячий</p>
-      </aside>
-
-      <div className="hero-preview" aria-hidden="true">
-        <span>атмосфера ниже</span>
       </div>
     </section>
   );
