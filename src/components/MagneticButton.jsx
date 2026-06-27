@@ -8,6 +8,8 @@ export default function MagneticButton({
   className = '',
   icon = true,
   onClick,
+  target,
+  rel,
 }) {
   const ref = useRef(null);
 
@@ -42,6 +44,8 @@ export default function MagneticButton({
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
       onClick={onClick}
+      target={target}
+      rel={rel}
     >
       <span>{children}</span>
       {icon ? <ArrowUpRight aria-hidden="true" size={17} strokeWidth={1.8} /> : null}

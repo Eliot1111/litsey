@@ -1152,73 +1152,52 @@ main {
   overflow: hidden;
 }
 
-.map-paper {
+.map-frame {
   position: relative;
   min-height: 520px;
-  overflow: hidden;
+  height: 100%;
+  background: var(--paper-200);
+}
+
+.map-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.map-overlay {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 250, 240, 0.22);
+  border-radius: var(--radius-md);
   background:
-    linear-gradient(180deg, rgba(251, 245, 232, 0.94), rgba(239, 224, 191, 0.92)),
-    repeating-linear-gradient(90deg, rgba(53, 11, 12, 0.035) 0 1px, transparent 1px 12px);
-}
-
-.map-line {
-  position: absolute;
-  width: 72%;
-  height: 3px;
-  border-radius: 999px;
-  background: rgba(113, 27, 32, 0.22);
-  transform-origin: center;
-}
-
-.map-line--one {
-  top: 28%;
-  left: -8%;
-  transform: rotate(-11deg);
-}
-
-.map-line--two {
-  top: 56%;
-  right: -10%;
-  background: rgba(185, 35, 47, 0.24);
-  transform: rotate(17deg);
-}
-
-.map-line--three {
-  top: 72%;
-  left: 8%;
-  width: 52%;
-  background: rgba(178, 120, 53, 0.34);
-  transform: rotate(-32deg);
-}
-
-.map-pin {
-  position: absolute;
-  top: 42%;
-  left: 50%;
-  display: inline-flex;
-  min-width: 132px;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 14px;
-  border: 1px solid rgba(113, 27, 32, 0.28);
-  border-radius: 999px;
-  background: var(--wine-900);
+    linear-gradient(180deg, rgba(53, 11, 12, 0.88), rgba(33, 8, 8, 0.92));
   color: var(--milk);
-  font-weight: 800;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 18px 44px rgba(53, 11, 12, 0.22);
+  box-shadow: 0 18px 44px rgba(20, 6, 6, 0.28);
+  backdrop-filter: blur(10px);
+  pointer-events: none;
 }
 
-.map-paper p {
-  position: absolute;
-  left: 24px;
-  right: 24px;
-  bottom: 24px;
-  margin: 0;
-  padding-top: 18px;
-  border-top: 1px solid rgba(72, 25, 20, 0.2);
-  color: var(--wine-900);
-  font-weight: 800;
+.map-overlay span {
+  display: block;
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.28rem;
+  font-weight: 500;
+}
+
+.map-overlay p {
+  margin: 6px 0 0;
+  color: rgba(255, 250, 240, 0.82);
+  font-size: 0.94rem;
+  line-height: 1.45;
 }
 
 .site-footer {
@@ -1516,7 +1495,7 @@ main {
   }
 
   .map-card,
-  .map-paper {
+  .map-frame {
     min-height: 390px;
   }
 

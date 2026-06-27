@@ -1,4 +1,5 @@
-import { Clock3, MapPin, Navigation, Phone } from 'lucide-react';
+import { Clock3, MapPin, Phone } from 'lucide-react';
+import { cafeAddress, yandexMapEmbed, yandexMapLink } from '../data/contacts.js';
 import MagneticButton from './MagneticButton.jsx';
 import Reveal from './Reveal.jsx';
 
@@ -6,7 +7,7 @@ const contactRows = [
   {
     icon: MapPin,
     label: 'Адрес',
-    value: 'укажите адрес кафе',
+    value: cafeAddress,
   },
   {
     icon: Clock3,
@@ -47,21 +48,23 @@ export default function Contacts() {
             })}
           </div>
 
-          <MagneticButton href="#" variant="primary">
+          <MagneticButton href={yandexMapLink} variant="primary" target="_blank" rel="noreferrer">
             Открыть на карте
           </MagneticButton>
         </Reveal>
 
-        <Reveal className="map-card" delay={120} aria-label="Карта-заглушка">
-          <div className="map-paper">
-            <div className="map-line map-line--one" />
-            <div className="map-line map-line--two" />
-            <div className="map-line map-line--three" />
-            <div className="map-pin">
-              <Navigation aria-hidden="true" size={24} strokeWidth={1.5} />
+        <Reveal className="map-card" delay={120} aria-label="Карта кафе Лицей">
+          <div className="map-frame">
+            <iframe
+              title="Кафе Лицей на карте Москвы"
+              src={yandexMapEmbed}
+              loading="lazy"
+              allowFullScreen
+            />
+            <div className="map-overlay">
               <span>Лицей</span>
+              <p>{cafeAddress}</p>
             </div>
-            <p>Адрес: укажите адрес кафе</p>
           </div>
         </Reveal>
       </div>
