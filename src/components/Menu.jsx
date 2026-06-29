@@ -32,7 +32,7 @@ export default function MenuSection() {
       <div className="section-shell">
         <Reveal className="section-heading menu-heading">
           <p className="section-index">Меню</p>
-          <h2>Разделы сверху, позиции внутри — просто и быстро.</h2>
+          <h2>Завтраки, выпечка, кофе и горячие блюда.</h2>
           <p>
             Выберите категорию в верхней ленте. Карточки мягко меняются, а в
             каждой позиции остаются только название и цена.
@@ -42,7 +42,6 @@ export default function MenuSection() {
         <Reveal className="menu-panel" delay={100}>
           <div className="menu-control-row">
             <div className="menu-current">
-              <span>Сейчас открыт раздел</span>
               <h3>{selected.title}</h3>
             </div>
 
@@ -74,7 +73,6 @@ export default function MenuSection() {
           <div className="menu-list" role="tabpanel" aria-label={selected.title} key={selected.id}>
             <div className="menu-list__top">
               <p>{selected.note}</p>
-              <span>{selected.items.length} поз.</span>
             </div>
 
             <div className="menu-card-grid">

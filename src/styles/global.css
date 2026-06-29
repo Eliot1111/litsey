@@ -529,15 +529,6 @@ main {
   border-bottom: 1px solid var(--line);
 }
 
-.menu-current span {
-  display: block;
-  margin-bottom: 8px;
-  color: var(--brick);
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-
 .menu-current h3 {
   margin: 0;
   color: var(--wine-900);
@@ -632,12 +623,6 @@ main {
   margin: 0;
   color: var(--muted);
   font-weight: 700;
-}
-
-.menu-list__top span {
-  flex: 0 0 auto;
-  color: var(--brick);
-  font-weight: 900;
 }
 
 .menu-card-grid {
